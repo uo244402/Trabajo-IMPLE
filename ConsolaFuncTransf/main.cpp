@@ -1,22 +1,21 @@
 #include "DiscreteTF.h"
 #include "MySignal.h"
-#include <QCoreApplication>
+//#include <QCoreApplication>
+#include <QTextStream>
 #include <QFile>
 #include <QThread>
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
-
     MySignal torque_Nm,force_N,speedMotor_ms,positionMotor_m; // señales de entrada/salida
     DiscreteTF force2torque,speed2force,speed2pos; // funciones de transferencia discretizadas
-    float wheel_diam=0.2, reduction=20; // parametros incializados (SI)
+    //float wheel_diam=0.2, reduction=20; // parametros incializados (SI)
     QString params_xml;
     //Leer params_xml de archivo "params.xml"
     //wheel_diam=XmlGetFloat(params_xml,"WheelDiam_mm")/1000.0;
 
     // Se inicializan las fts con los coeficientes de transferencia en formato "[b0,b1,...,bm]","[a0,a1,...an]"
-    force2torque.Initialize("[100]","[0]"); // Coefs personalizados para cada Fj
+    force2torque.Initialize("[100]","[0]");
     speed2force.Initialize("[3333.83,-3332.83]","[1,1]");
     speed2pos.Initialize("[0.0075,0.0075]","[1,-1]");
 
@@ -58,8 +57,8 @@ int main(int argc, char *argv[])
 
         cout << QString::number(force_N.GetActualValue()) + "|" + QString::number(torque_Nm.GetActualValue()) + "|" + QString::number(positionMotor_m.GetActualValue()) + "\n" << Qt::endl; cout.flush();
 
-        QThread::msleep(500);
+        QThread::msleep(5);
     }
 
-    return a.exec();
+    cout << "END" << Qt::endl; cout.flush();
 }
