@@ -20,8 +20,10 @@ int main(int argc, char *argv[])
     speed2pos.Initialize("[b0,b1,...,bm]","[a0,a1,...an]");
 
     // Inicializar señales según el tamaño requerido:
+    torque_Nm.Initialize(2);
     force_N.Initialize(2);
     speedMotor_ms.Initialize(2);
+    positionMotor_m.Initialize(2);
 
     QFile input("input.txt"),output("output.txt");
     input.open(QIODevice::ReadOnly);
