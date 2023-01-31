@@ -26,12 +26,16 @@ int main(int argc, char *argv[])
     speedMotor_ms.Initialize(2);
     positionMotor_m.Initialize(2);
 
-    QFile input("input.txt"),output("output.txt");
+    QFile input("v2.txt"),output("output.txt");
     input.open(QIODevice::ReadOnly);
     output.open(QIODevice::WriteOnly);
     QString lineIn,lineOut;
 
-    while (input.canReadLine())
+    QTextStream cout(stdout);
+
+    cout << "Force | Torque | Position " << Qt::endl; cout.flush();
+
+    while (!input.atEnd())
     {
         // PROCESAMIENTO
         // se avanza un instante en las tablas (se desplazan las tablas)
@@ -51,7 +55,10 @@ int main(int argc, char *argv[])
         // se crea linea de salida con todos los valores obtenidos para meterlos a fichero (con comas para formato .csv)
         lineOut = QString::number(force_N.GetActualValue()) + "," + QString::number(torque_Nm.GetActualValue()) + "," + QString::number(positionMotor_m.GetActualValue()) + "\n";
         output.write(lineOut.toLatin1());
-        QThread::msleep(5);
+
+        cout << QString::number(force_N.GetActualValue()) + "|" + QString::number(torque_Nm.GetActualValue()) + "|" + QString::number(positionMotor_m.GetActualValue()) + "\n" << Qt::endl; cout.flush();
+
+        QThread::msleep(500);
     }
 
     return a.exec();

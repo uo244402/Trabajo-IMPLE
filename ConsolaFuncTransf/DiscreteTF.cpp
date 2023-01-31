@@ -58,10 +58,10 @@ float DiscreteTF::Calc1Step(const QVector<float> &in, const QVector<float> &out)
 {
     float b_sum=0, a_sum=0;
 
-    for(int i = 0; i<=m_b ; i++){ // se multiplican los coeficientes de b por la entrada
+    for(int i = 0; i<m_b ; i++){ // se multiplican los coeficientes de b por la entrada
         b_sum += in[i]*b[i];
     }
-    for(int i = 1; i<=n_a ; i++){ // se multiplican los coeficientes de a por la salida
+    for(int i = 1; i<n_a ; i++){ // se multiplican los coeficientes de a por la salida
         a_sum += out[i]*a[i];
     }
 

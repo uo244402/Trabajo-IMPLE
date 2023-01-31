@@ -20,3 +20,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     DiscreteTF.h \
     MySignal.h
+
+RESOURCES += \
+    resources.qrc
