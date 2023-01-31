@@ -89,7 +89,6 @@ ylabel('Magnitud')
 %% 2)Filtro segundo grado (Butterworth)
 
 fc = 1; % frecuencia de corte
-% fc = 0.05; % frecuencia de corte (con ec. en diferencias)
 [b_filt,a_filt] = butter(2,fc/(fm/2));
 vel_lin_filtered = filtfilt(b_filt,a_filt,vel_lin);
 
