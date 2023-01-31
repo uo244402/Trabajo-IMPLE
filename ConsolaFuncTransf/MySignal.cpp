@@ -10,7 +10,7 @@ void MySignal::Initialize(int i_maxLength) // inicializa todos los datos de la t
     maxDataLength = i_maxLength;
 
     for(int i = 0; i <= maxDataLength; i++){
-        data[i] = 0;
+        data.append(0);
     }
 }
 

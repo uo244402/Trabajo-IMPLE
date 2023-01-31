@@ -9,7 +9,7 @@ QVector<float> DiscreteTF::ExtractCoeff(QString _param_str, bool &ok) // se extr
         ok = false;
 
         for(int i = 0; i<=5; i++){
-            coeff[i] = 0;
+            coeff.append(0);
         }
 
         return coeff;
@@ -25,8 +25,8 @@ QVector<float> DiscreteTF::ExtractCoeff(QString _param_str, bool &ok) // se extr
        // se pasan a float cada uno de ellos y se guardan en la tabla b y a
        int size_param_list = _param_list.size();
 
-       for(int i = 0; i<=size_param_list; i++){
-           coeff[i] = _param_list[i].toFloat();
+       for(int i = 0; i<size_param_list; i++){
+           coeff.append(_param_list[i].toFloat());
        }
 
        ok = true;
